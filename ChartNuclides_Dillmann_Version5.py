@@ -2,12 +2,18 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 def MOELLER():
-    filename1_MO = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_P_MOELLER.txt"
-    filename2_MO = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_ELE_MOELLER.txt"
-    filename3_MO = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable1.txt" 
-    filename4_MO = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\N_Z_stable.txt"
+    if os.name == "nt":
+        dirDelim = "\\"
+    else:
+        dirDelim = "/";
+
+    filename1_MO = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_P_MOELLER.txt"
+    filename2_MO = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_ELE_MOELLER.txt"
+    filename3_MO = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable1.txt" 
+    filename4_MO = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "N_Z_stable.txt"
 
     #assigns one column of data in the text files to various specific arrays
     N_P,Z_P,P1n,P2n,P3n = np.loadtxt(filename1_MO,skiprows=1,unpack=True)
@@ -335,26 +341,30 @@ def MOELLER():
 #------------------------------------------------------------------------------------------------------------
 
 def main():
-    
+
     choice_user = 0
     choice_user = input("Enter 1 to display the experimental version; Enter 2 to display the theoretical version: ")
+    if os.name == "nt":
+        dirDelim = "\\"
+    else:
+        dirDelim = "/";
 
     if choice_user == 2:
         MOELLER()
     else:
         #reads in values from text files and stores all of the data columns into arrays
-        filename1 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable1.txt" 
-        filename2 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\N_Z_stable.txt"
+        filename1 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable1.txt" 
+        filename2 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "N_Z_stable.txt"
         
-        filename3 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_Qbn.txt" 
-        filename4 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_Qb2n.txt"
-        filename5 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_Qb3n.txt"
-        filename6 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_Qb4n.txt"
+        filename3 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_Qbn.txt" 
+        filename4 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_Qb2n.txt"
+        filename5 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_Qb3n.txt"
+        filename6 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_Qb4n.txt"
 
-        filename7 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_P_ENSDF.txt"
-        filename8 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_ELE_ENSDF.txt"
-        filename9 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_iso1_ENSDF.txt"
-        filename10 = "C:\Users\Stephanie_2\Documents\GitHub\TRIUMF-Bn-Chart\Text_Files\ChartNuclides_DataTable_iso2_ENSDF.txt"
+        filename7 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_P_ENSDF.txt"
+        filename8 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_ELE_ENSDF.txt"
+        filename9 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_iso1_ENSDF.txt"
+        filename10 = os.getcwd()+dirDelim + "Text_Files" + dirDelim + "ChartNuclides_DataTable_iso2_ENSDF.txt"
 
         N,Z,bn,b2n = np.loadtxt(filename1,skiprows=1,unpack=True)
         s1 = len(N)
